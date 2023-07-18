@@ -1,3 +1,5 @@
+import csv
+
 def encode_vigenere(message, key):
         encode_msg = ""
         alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -37,7 +39,7 @@ def decode_vigenere(message, key):
 def reset_key(size, key):
     index = 0
     while index < size:
-        key.append("a")
+        key.append(chr(97))
         index += 1
     return key
 
@@ -60,15 +62,27 @@ def test(key):
         key[index - 1] ='a'
     return key
 
+def create_csv():
+    header = ["original","offset", "message"]
+    with open("decoded_message.csv", "w") as data:
+        writer = csv.writer(data)
+        writer.writerow(header)
+
+def appendline(key, message, original):
+    temp = [original, key, message]
+    with open("decoded_message.csv", "a") as data:
+        writer = csv.writer(data)
+        writer.writerow(temp)
+
 def generate_key(size, key, message):
     index = 97
+    print(size)
     if size == 1:
         while index < 123:
             key[0] = chr(index)
             possibility = decode_vigenere(message,key)
-            print("Key: {}".format(key))
-            print(possibility)
-            print("**********************")
+            str_key = ''.join(key)
+            appendline(str_key, possibility, message)
             index += 1
     else:
         last_index = len(key) - 1
@@ -79,9 +93,8 @@ def generate_key(size, key, message):
         while i < max_possibility:
             key[index] = chr(unicode)
             possibility = decode_vigenere(message, key)
-            print("Key: {}".format(key))
-            print(possibility)
-            print("**********************")
+            str_key= ''.join(key)
+            appendline(str_key, possibility, message)
             if unicode == 122:
                 unicode = 96
                 key = test(key)
@@ -94,9 +107,10 @@ def build_key(size, message):
     generate_key(size, key, message)
 
 def brut_force_vigenere(message):
-    for i in range(1,len(message) + 1):
+    create_csv()
+    for i in range(1, len(message) + 1):
         build_key(i, message)
 
-encoded_message = encode_vigenere("Hell", "test")
-print(encoded_message)
+encoded_message = encode_vigenere("he", "test")
+print("encoded message : {}".format(encoded_message))
 brut_force_vigenere(encoded_message)
