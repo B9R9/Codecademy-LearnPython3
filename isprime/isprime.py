@@ -6,6 +6,7 @@ def isprime(num):
 	return True
 
 prime_numbers_list = filter(isprime, range(0,100))
+
 for x in prime_numbers_list:
   print(x)
 
