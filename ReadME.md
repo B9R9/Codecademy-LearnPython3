@@ -14,7 +14,7 @@ insert screenshot certification codecademy
 |------|:---------------------------------------------------------:|
 |[isprime](./isprime/ReadMe.md)| Check if a number is prime or not|
 |[bruteForcePassword](./bruteForcePassword/ReadMe.md)| Generate a chain of character | 
-|[bruteForcevigenere](./bruteForcevigenere/ReadMe.md)| Generate a possible solution to a vigenere encryption |
+|[bruteForcevigenere](./bruteForceVigenere/ReadMe.md)| Generate a possible solution to a vigenere encryption |
 |[coded correspondence](./coded_correspondence/ReadMe.md)| Generate a possible solution to a vigenere encryption |
-|[c functions lib](./c_function_lib/ReadMe.md)| Create a lib with c functions |
+|[c functions lib](./c_functions_lib/ReadMe.md)| Create a lib with c functions |
 
